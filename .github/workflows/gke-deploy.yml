@@ -23,7 +23,11 @@ jobs:
       with:
         project_id: quantum-studio-449301-g5
 
-    - name: Get GKE credentials
+    - name: Install GKE auth plugin
+      run: |
+        gcloud components install gke-gcloud-auth-plugin --quiet
+
+    - name: Configure kubectl
       run: |
         gcloud container clusters get-credentials ntp-ha-cluster --zone us-central1-a
 
