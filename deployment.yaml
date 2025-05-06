@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chrony-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: chrony
+  template:
+    metadata:
+      labels:
+        app: chrony
+    spec:
+      containers:
+      - name: chrony
+        image: dockurr/chrony:latest
+        ports:
+        - containerPort: 123
+          protocol: UDP
